@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
-import { basename } from "node:path";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, dirname, join } from "node:path";
 
 const [, , version, installerPath] = process.argv;
 
@@ -21,5 +21,7 @@ const manifest = {
   published_at: new Date().toISOString(),
 };
 
-writeFileSync("deploy/latest-update.json", `${JSON.stringify(manifest, null, 2)}\n`);
+const manifestPath = join(dirname(installerPath), "latest-update.json");
+mkdirSync(dirname(manifestPath), { recursive: true });
+writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 console.log(sha256);

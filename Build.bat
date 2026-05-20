@@ -9,7 +9,7 @@ echo.
 set "FETCHR_UI_REDESIGN=true"
 set "VITE_FETCHR_UI_REDESIGN=true"
 set "FETCHR_TG_BETA_BOT=fetchr_beta_bot"
-set "FETCHR_VPS_API_URL=https://fetchr.ru/api"
+set "FETCHR_VPS_API_URL=https://fetchr.fun/api"
 set "TAURI_DEV_HOST=127.0.0.1"
 
 set "PKG=npm"

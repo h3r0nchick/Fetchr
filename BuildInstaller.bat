@@ -79,7 +79,7 @@ if "%TAURI_INSTALLER_PATH%"=="" (
 if not exist "%FETCHR_INSTALLER_DIR%\" mkdir "%FETCHR_INSTALLER_DIR%" || goto :error
 copy /y "%TAURI_INSTALLER_PATH%" "%FETCHR_INSTALLER_PATH%" >nul || goto :error
 
-echo [5/5] Publishing installer alias for the website...
+echo [5/5] Preparing installer aliases and update manifest...
 copy /y "%FETCHR_INSTALLER_PATH%" "Fetchr-Setup-v%APP_VERSION%.exe" >nul || goto :error
 copy /y "%FETCHR_INSTALLER_PATH%" "Fetchr-Setup-latest.exe" >nul || goto :error
 for /f "usebackq delims=" %%H in (`node scripts/write-latest-update-manifest.mjs "%APP_VERSION%" "%FETCHR_INSTALLER_PATH%"`) do set "FETCHR_INSTALLER_SHA256=%%H"
